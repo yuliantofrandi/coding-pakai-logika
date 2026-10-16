@@ -46,7 +46,7 @@ User berperan sebagai Business Analyst sekaligus UI/UX Designer. Fokus: analisis
 - Tulis rules dan acceptance criteria sebagai kalimat biasa, **tanpa kode nomor** (jangan pakai R1.1, AC1.2, F1, dsb.) — cukup poin/checkbox di bawah judul flow.
 - Setiap rule: singkat, jelas, **bisa langsung diuji** (hindari kata kabur seperti "cepat", "mudah", "sesuai").
 - **Semua aturan yang disepakati wajib masuk .md.** Tidak boleh ada yang hanya tertinggal di chat.
-- Perbarui .md **setiap ada perubahan atau keputusan baru**, di giliran yang sama — jangan tunggu diminta. Catat di Changelog.
+- Perbarui .md **setiap ada perubahan atau keputusan baru**, di giliran yang sama — jangan tunggu diminta. Langsung ubah isi rules-nya; jangan buat bagian Changelog/riwayat perubahan (riwayat sudah ada di git).
 
 ## Tombol "Rules" (wajib di setiap UI/UX)
 

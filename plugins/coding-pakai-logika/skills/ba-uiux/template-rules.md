@@ -52,6 +52,3 @@
 
 ## 7. Backlog / Iterasi Berikutnya
 - …
-
-## 8. Changelog
-- YYYY-MM-DD — …
