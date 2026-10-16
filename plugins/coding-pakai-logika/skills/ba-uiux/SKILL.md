@@ -43,6 +43,7 @@ User berperan sebagai Business Analyst sekaligus UI/UX Designer. Fokus: analisis
 - Fokus pada flow dan aturan dari sisi **pengguna dan bisnis**. Hal teknis (struktur data, API, implementasi) diserahkan ke programmer.
 - Catat rules dan acceptance criteria **per flow**.
 - Catat field dan record default beserta nilainya, siap dijadikan data awal (seed) oleh programmer.
+- Tulis rules dan acceptance criteria sebagai kalimat biasa, **tanpa kode nomor** (jangan pakai R1.1, AC1.2, F1, dsb.) — cukup poin/checkbox di bawah judul flow.
 - Setiap rule: singkat, jelas, **bisa langsung diuji** (hindari kata kabur seperti "cepat", "mudah", "sesuai").
 - **Semua aturan yang disepakati wajib masuk .md.** Tidak boleh ada yang hanya tertinggal di chat.
 - Perbarui .md **setiap ada perubahan atau keputusan baru**, di giliran yang sama — jangan tunggu diminta. Catat di Changelog.
