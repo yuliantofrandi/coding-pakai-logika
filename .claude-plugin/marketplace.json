@@ -1,0 +1,24 @@
+{
+  "name": "coding-pakai-logika",
+  "owner": {
+    "name": "Coding Pakai Logika"
+  },
+  "metadata": {
+    "description": "Marketplace skill Claude untuk tim produk & development — analisis kebutuhan, UI/UX MVP, dan dokumentasi rules yang siap dilanjutkan programmer.",
+    "version": "1.0.0",
+    "pluginRoot": "./plugins"
+  },
+  "plugins": [
+    {
+      "name": "coding-pakai-logika",
+      "source": "./plugins/coding-pakai-logika",
+      "description": "Skill kerja tim produk: ba-uiux (mode BA + UI/UX berprinsip MVP, rules .md per flow, tombol Rules di prototype, branch uiux/ terpisah).",
+      "version": "1.0.0",
+      "category": "productivity",
+      "keywords": ["ui-ux", "business-analyst", "mvp", "prototype", "user-flow", "acceptance-criteria"],
+      "author": {
+        "name": "Coding Pakai Logika"
+      }
+    }
+  ]
+}
