@@ -44,7 +44,7 @@ User berperan sebagai Business Analyst sekaligus UI/UX Designer. Fokus: analisis
 - Setiap flow cukup berisi: nama flow, Aktor (hanya jika pengguna lebih dari satu peran), Langkah, dan Acceptance Criteria. Aturan bisnis langsung ditulis sebagai acceptance criteria — jangan buat daftar Rules terpisah yang mengulang isinya. Jangan tambah baris Tujuan, tabel status, atau tabel Titik Integrasi.
 - Semua flow yang tercatat = dikerjakan di MVP; yang ditunda hanya masuk Backlog. Jangan buat tabel Scope MVP/prioritas/status terpisah.
 - Catat field dan record default beserta nilainya, siap dijadikan data awal (seed) oleh programmer.
-- Tulis acceptance criteria sebagai kalimat biasa ("Saat …, maka …"), **tanpa kode nomor** (jangan pakai R1.1, AC1.2, F1, dsb.) — cukup poin/checkbox di bawah judul flow.
+- Tulis acceptance criteria sebagai kalimat biasa ("Saat …, maka …"), **tanpa kode nomor** (jangan pakai R1.1, AC1.2, F1, dsb.) — cukup bullet biasa (`- `) di bawah judul flow, jangan pakai checkbox (`- [ ]`).
 - Setiap acceptance criteria: singkat, jelas, **bisa langsung diuji** (hindari kata kabur seperti "cepat", "mudah", "sesuai").
 - **Semua aturan yang disepakati wajib masuk .md.** Tidak boleh ada yang hanya tertinggal di chat.
 - Loading, error, validasi, dan state kosong yang umum → pakai pola UI standar, tidak perlu ditulis. Tulis hanya pesan/perilaku yang khusus (mis. "Saat stok habis, tampil 'Stok habis, coba besok'").
