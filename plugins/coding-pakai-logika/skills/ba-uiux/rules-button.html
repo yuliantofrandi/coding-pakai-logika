@@ -7,44 +7,120 @@
 <div data-prototype-only id="ux-rules">
   <button id="ux-rules-btn" type="button" aria-label="Lihat rules">&#128196; Rules</button>
   <div id="ux-rules-overlay" hidden></div>
-  <aside id="ux-rules-panel" hidden aria-label="Rules & Acceptance Criteria">
+  <aside id="ux-rules-panel" hidden aria-label="Rules">
     <header>
-      <strong>Rules &amp; Acceptance Criteria</strong>
+      <div>
+        <div class="ux-eyebrow">Rules &amp; Acceptance Criteria</div>
+        <div id="ux-rules-title">Memuat&hellip;</div>
+      </div>
       <button id="ux-rules-close" type="button" aria-label="Tutup">&#10005;</button>
     </header>
-    <div id="ux-rules-body">Memuat&hellip;</div>
+    <nav id="ux-rules-nav"></nav>
+    <div id="ux-rules-body"></div>
   </aside>
 </div>
 <style>
+  #ux-rules{--ux-text:#1f2937;--ux-muted:#6b7280;--ux-line:#e5e7eb;--ux-soft:#f9fafb;--ux-accent:#2563eb;--ux-accent-soft:#eff6ff}
+  #ux-rules [hidden]{display:none!important}
   #ux-rules-btn{position:fixed;top:16px;right:16px;z-index:9999;padding:8px 14px;border:0;border-radius:999px;
     background:#111827;color:#fff;font:600 13px/1 system-ui,sans-serif;box-shadow:0 4px 14px rgba(0,0,0,.2);cursor:pointer}
   #ux-rules-btn:hover{background:#374151}
-  #ux-rules-overlay{position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.3)}
-  #ux-rules-panel{position:fixed;top:0;right:0;z-index:10000;width:min(560px,100vw);height:100vh;display:flex;flex-direction:column;
-    background:#fff;color:#111827;box-shadow:-8px 0 24px rgba(0,0,0,.15);font:14px/1.6 system-ui,sans-serif}
-  #ux-rules-panel header{display:flex;justify-content:space-between;align-items:center;padding:14px 20px;border-bottom:1px solid #e5e7eb}
-  #ux-rules-close{border:0;background:none;font-size:18px;cursor:pointer}
-  #ux-rules-body{flex:1;overflow:auto;padding:16px 20px}
-  #ux-rules-body table{border-collapse:collapse;width:100%;margin:8px 0}
-  #ux-rules-body th,#ux-rules-body td{border:1px solid #e5e7eb;padding:6px 8px;text-align:left;vertical-align:top}
-  #ux-rules-body code{background:#f3f4f6;padding:1px 4px;border-radius:4px}
-  #ux-rules [hidden]{display:none!important}
+  #ux-rules-overlay{position:fixed;inset:0;z-index:9999;background:rgba(17,24,39,.35)}
+  #ux-rules-panel{position:fixed;top:0;right:0;z-index:10000;width:min(720px,100vw);height:100vh;display:flex;flex-direction:column;
+    background:#fff;color:var(--ux-text);box-shadow:-8px 0 32px rgba(0,0,0,.18);font:15px/1.7 system-ui,-apple-system,"Segoe UI",sans-serif}
+  #ux-rules-panel header{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;padding:18px 24px 12px}
+  .ux-eyebrow{font-size:11px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--ux-muted)}
+  #ux-rules-title{font-size:20px;font-weight:700;line-height:1.3}
+  #ux-rules-close{flex:none;width:32px;height:32px;border:0;border-radius:8px;background:var(--ux-soft);font-size:16px;cursor:pointer}
+  #ux-rules-close:hover{background:var(--ux-line)}
+  #ux-rules-nav{display:flex;gap:6px;overflow-x:auto;padding:0 24px 12px;border-bottom:1px solid var(--ux-line)}
+  #ux-rules-nav a{flex:none;padding:4px 12px;border-radius:999px;background:var(--ux-soft);border:1px solid var(--ux-line);
+    color:var(--ux-text);font-size:13px;text-decoration:none;white-space:nowrap}
+  #ux-rules-nav a:hover{background:var(--ux-accent-soft);border-color:var(--ux-accent);color:var(--ux-accent)}
+  #ux-rules-body{flex:1;overflow:auto;padding:8px 24px 48px;scroll-behavior:smooth}
+  #ux-rules-body h2{margin:32px 0 12px;font-size:17px;font-weight:700;scroll-margin-top:12px}
+  #ux-rules-body h2:first-child{margin-top:16px}
+  #ux-rules-body blockquote{margin:12px 0;padding:10px 14px;border-left:3px solid var(--ux-line);background:var(--ux-soft);color:var(--ux-muted);font-size:13px}
+  #ux-rules-body blockquote p{margin:0}
+  #ux-rules-body p{margin:6px 0}
+  #ux-rules-body ul,#ux-rules-body ol{margin:4px 0 12px;padding-left:22px}
+  #ux-rules-body li{margin:4px 0}
+  #ux-rules-body li::marker{color:var(--ux-muted)}
+  #ux-rules-body code{background:var(--ux-soft);border:1px solid var(--ux-line);padding:0 5px;border-radius:4px;font-size:13px}
+  /* Setiap flow / entitas (h3) jadi satu kartu */
+  #ux-rules-body .ux-card{margin:12px 0;padding:14px 18px;border:1px solid var(--ux-line);border-radius:12px;background:#fff;scroll-margin-top:12px}
+  #ux-rules-body .ux-card h3{margin:0 0 8px;font-size:16px;font-weight:700;color:var(--ux-accent)}
+  /* Label "Langkah:", "Acceptance Criteria:" dsb. */
+  #ux-rules-body .ux-label{margin:14px 0 2px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ux-muted)}
+  #ux-rules-body .ux-meta strong{display:inline-block;margin-right:6px;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ux-muted)}
+  /* Langkah bernomor */
+  #ux-rules-body ol{list-style:none;padding-left:0;counter-reset:ux}
+  #ux-rules-body ol>li{counter-increment:ux;position:relative;padding-left:32px}
+  #ux-rules-body ol>li::before{content:counter(ux);position:absolute;left:0;top:2px;width:22px;height:22px;border-radius:50%;
+    background:var(--ux-accent-soft);color:var(--ux-accent);font-size:12px;font-weight:700;line-height:22px;text-align:center}
+  /* Tabel */
+  #ux-rules-body .ux-table{overflow-x:auto;margin:8px 0 12px;border:1px solid var(--ux-line);border-radius:10px}
+  #ux-rules-body table{border-collapse:collapse;width:100%;font-size:14px}
+  #ux-rules-body th{background:var(--ux-soft);font-weight:600;font-size:12px;color:var(--ux-muted);text-transform:uppercase;letter-spacing:.04em}
+  #ux-rules-body th,#ux-rules-body td{padding:8px 12px;text-align:left;vertical-align:top;border-bottom:1px solid var(--ux-line)}
+  #ux-rules-body tr:last-child td{border-bottom:0}
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.2/marked.min.js"></script>
 <script>
 (function(){
   var RULES_MD_PATH = 'docs/ux-rules.md';
-  var btn=document.getElementById('ux-rules-btn'), panel=document.getElementById('ux-rules-panel'),
-      overlay=document.getElementById('ux-rules-overlay'), body=document.getElementById('ux-rules-body');
+  var $=function(id){ return document.getElementById(id); };
+  var panel=$('ux-rules-panel'), overlay=$('ux-rules-overlay'), body=$('ux-rules-body'), nav=$('ux-rules-nav'), title=$('ux-rules-title');
+
+  function slug(t,i){ return 'ux-'+i+'-'+t.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,''); }
+
+  // Rapikan HTML hasil markdown agar enak dibaca.
+  function beautify(){
+    var h1=body.querySelector('h1');
+    title.textContent=h1 ? h1.textContent.replace(/\s*[—-]\s*UX Rules.*$/i,'') : 'Rules';
+    if(h1) h1.remove();
+
+    // Tabel dibungkus agar bisa digeser di layar sempit.
+    body.querySelectorAll('table').forEach(function(t){
+      var w=document.createElement('div'); w.className='ux-table'; t.parentNode.insertBefore(w,t); w.appendChild(t);
+    });
+
+    // "**Langkah:**" sendirian → label kecil; "**Aktor:** Kasir" → baris meta.
+    body.querySelectorAll('p').forEach(function(p){
+      var s=p.querySelector('strong');
+      if(!s || p.firstChild!==s) return;
+      if(p.textContent.trim()===s.textContent.trim()){ p.className='ux-label'; p.textContent=s.textContent.replace(/:\s*$/,''); }
+      else { p.className='ux-meta'; s.textContent=s.textContent.replace(/:\s*$/,''); }
+    });
+
+    // Setiap h3 + isinya (sampai h2/h3 berikutnya) jadi kartu.
+    body.querySelectorAll('h3').forEach(function(h){
+      var card=document.createElement('section'); card.className='ux-card';
+      h.parentNode.insertBefore(card,h);
+      var n=h; while(n && !(n!==h && /^H[1-3]$/.test(n.tagName))){ var next=n.nextElementSibling; card.appendChild(n); n=next; }
+    });
+
+    // Navigasi cepat ke setiap bagian (h2), angka "1." di judul dibuang.
+    nav.innerHTML='';
+    body.querySelectorAll('h2').forEach(function(h,i){
+      h.textContent=h.textContent.replace(/^\d+\.\s*/,'');
+      h.id=slug(h.textContent,i);
+      var a=document.createElement('a'); a.href='#'+h.id; a.textContent=h.textContent;
+      a.onclick=function(e){ e.preventDefault(); h.scrollIntoView({behavior:'smooth',block:'start'}); };
+      nav.appendChild(a);
+    });
+    nav.hidden=!nav.children.length;
+  }
+
   function open(){
     panel.hidden=overlay.hidden=false;
     // Selalu ambil ulang agar isi .md terbaru langsung terlihat.
     fetch(RULES_MD_PATH+'?t='+Date.now()).then(function(r){ if(!r.ok) throw r.status; return r.text(); })
-      .then(function(md){ body.innerHTML=marked.parse(md); })
-      .catch(function(){ body.textContent='File '+RULES_MD_PATH+' tidak bisa dimuat. Buka prototype lewat server lokal.'; });
+      .then(function(md){ body.innerHTML=marked.parse(md); beautify(); })
+      .catch(function(){ title.textContent='Rules'; nav.hidden=true; body.textContent='File '+RULES_MD_PATH+' tidak bisa dimuat. Buka prototype lewat server lokal.'; });
   }
   function close(){ panel.hidden=overlay.hidden=true; }
-  btn.onclick=open; overlay.onclick=close; document.getElementById('ux-rules-close').onclick=close;
+  $('ux-rules-btn').onclick=open; overlay.onclick=close; $('ux-rules-close').onclick=close;
   document.addEventListener('keydown',function(e){ if(e.key==='Escape') close(); });
 })();
 </script>
