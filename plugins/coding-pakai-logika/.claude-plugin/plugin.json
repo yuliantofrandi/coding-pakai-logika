@@ -1,6 +1,6 @@
 {
   "name": "coding-pakai-logika",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "description": "Skill kerja tim produk & development. ba-uiux menjadi mode kerja Business Analyst + UI/UX berprinsip MVP: menyiapkan branch uiux/ terpisah, mencatat rules + acceptance criteria + record default per flow ke .md, dan memasang tombol Rules di setiap prototype.",
   "author": {
     "name": "Coding Pakai Logika"

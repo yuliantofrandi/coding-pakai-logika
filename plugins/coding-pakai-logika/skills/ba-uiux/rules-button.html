@@ -2,6 +2,7 @@
   Tombol "Rules" melayang (kanan atas) — menampilkan isi file rules .md di panel samping.
   KHUSUS PROTOTYPE: programmer boleh menghapus seluruh blok ini (cari data-prototype-only).
   Ganti RULES_MD_PATH sesuai lokasi file rules proyek.
+  Isi BRANCH_NAME dengan nama branch git saat ini (git branch --show-current) — jadi judul panel.
   Catatan: fetch .md butuh dibuka lewat server lokal (bukan file://).
 -->
 <div data-prototype-only id="ux-rules">
@@ -69,6 +70,7 @@
 <script>
 (function(){
   var RULES_MD_PATH = 'docs/ux-rules.md';
+  var BRANCH_NAME = 'uiux/nama-fitur'; // diisi Claude, diperbarui setiap pindah branch
   var $=function(id){ return document.getElementById(id); };
   var panel=$('ux-rules-panel'), overlay=$('ux-rules-overlay'), body=$('ux-rules-body'), nav=$('ux-rules-nav'), title=$('ux-rules-title');
 
@@ -77,7 +79,7 @@
   // Rapikan HTML hasil markdown agar enak dibaca.
   function beautify(){
     var h1=body.querySelector('h1');
-    title.textContent=h1 ? h1.textContent.replace(/\s*[—-]\s*UX Rules.*$/i,'') : 'Rules';
+    title.textContent=BRANCH_NAME || (h1 ? h1.textContent.replace(/\s*[—-]\s*UX Rules.*$/i,'') : 'Rules');
     if(h1) h1.remove();
 
     // Tabel dibungkus agar bisa digeser di layar sempit.
@@ -117,7 +119,7 @@
     // Selalu ambil ulang agar isi .md terbaru langsung terlihat.
     fetch(RULES_MD_PATH+'?t='+Date.now()).then(function(r){ if(!r.ok) throw r.status; return r.text(); })
       .then(function(md){ body.innerHTML=marked.parse(md); beautify(); })
-      .catch(function(){ title.textContent='Rules'; nav.hidden=true; body.textContent='File '+RULES_MD_PATH+' tidak bisa dimuat. Buka prototype lewat server lokal.'; });
+      .catch(function(){ title.textContent=BRANCH_NAME || 'Rules'; nav.hidden=true; body.textContent='File '+RULES_MD_PATH+' tidak bisa dimuat. Buka prototype lewat server lokal.'; });
   }
   function close(){ panel.hidden=overlay.hidden=true; }
   $('ux-rules-btn').onclick=open; overlay.onclick=close; $('ux-rules-close').onclick=close;

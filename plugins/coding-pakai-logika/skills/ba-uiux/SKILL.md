@@ -55,8 +55,9 @@ User berperan sebagai Business Analyst sekaligus UI/UX Designer. Fokus: analisis
 
 Begitu tampilan UI/UX pertama terbentuk, **selalu** pasang tombol melayang di **kanan atas** untuk melihat isi file rules .md yang tersimpan. Berlaku di setiap halaman prototype, dan tetap ada di setiap revisi.
 
-- **Prototype HTML biasa** → tempel isi [rules-button.html](rules-button.html) sebelum `</body>`, sesuaikan `RULES_MD_PATH`.
-- **Proyek framework (React/Vue/Next, dll.)** → buat komponen setara di layout utama, dengan perilaku yang sama: tombol `📄 Rules` fixed `top:16px; right:16px`, klik → panel samping kanan berisi .md yang dirender agar mudah dibaca manusia (nama produk sebagai judul, tombol navigasi ke setiap bagian, setiap flow/entitas jadi kartu, label "Langkah"/"Acceptance Criteria" kecil, langkah bernomor bulat, tabel rapi), tutup lewat ✕ / klik luar / Esc, isi .md diambil ulang setiap dibuka. Untuk Vite bisa `import md from '<path>.md?raw'`.
+- **Judul panel = nama branch git saat ini** (hasil `git branch --show-current`, mis. `uiux/halaman-checkout`), agar setiap prototype mudah dibedakan. Setiap pindah/membuat branch, perbarui nilai ini. Jika bukan git repo, judul memakai nama produk dari .md.
+- **Prototype HTML biasa** → tempel isi [rules-button.html](rules-button.html) sebelum `</body>`, sesuaikan `RULES_MD_PATH` dan isi `BRANCH_NAME`.
+- **Proyek framework (React/Vue/Next, dll.)** → buat komponen setara di layout utama, dengan perilaku yang sama: tombol `📄 Rules` fixed `top:16px; right:16px`, klik → panel samping kanan berisi .md yang dirender agar mudah dibaca manusia (nama branch sebagai judul, tombol navigasi ke setiap bagian, setiap flow/entitas jadi kartu, label "Langkah"/"Acceptance Criteria" kecil, langkah bernomor bulat, tabel rapi), tutup lewat ✕ / klik luar / Esc, isi .md diambil ulang setiap dibuka. Untuk Vite bisa `import md from '<path>.md?raw'`.
 - Tandai sebagai khusus prototype (`data-prototype-only` / komentar `TODO-INTEGRASI: hapus di produksi`) agar programmer tahu boleh dihapus.
 - Tidak perlu dicatat di .md sebagai fitur produk — ini alat bantu review, bukan bagian MVP.
 
