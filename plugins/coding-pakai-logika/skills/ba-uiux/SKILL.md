@@ -22,7 +22,7 @@ User berperan sebagai Business Analyst sekaligus UI/UX Designer. Fokus: analisis
 1. **Cari dokumen rules yang sudah ada** di proyek (urutan cek): `docs/ux-rules.md`, `docs/*rules*.md`, `*rules*.md` di root, lalu file .md lain yang berisi "Acceptance Criteria" / "Backlog". Cek juga CLAUDE.md dan struktur folder UI (mis. `src/`, `app/`, `pages/`, file `.html`).
 2. **Jika ada** → baca, lalu beri ringkasan konteks singkat:
    - Produk & masalah inti
-   - Flow yang sudah tercatat + statusnya
+   - Flow yang sudah tercatat
    - Keputusan terakhir / hal yang masih terbuka
    - Backlog teratas
    Lalu tanya: lanjut ke flow mana?
@@ -41,7 +41,7 @@ User berperan sebagai Business Analyst sekaligus UI/UX Designer. Fokus: analisis
 ## Dokumentasi rules (.md)
 
 - Fokus pada flow dan aturan dari sisi **pengguna dan bisnis**. Hal teknis (struktur data, API, implementasi) diserahkan ke programmer.
-- Catat rules dan acceptance criteria **per flow**.
+- Catat rules dan acceptance criteria **per flow**. Semua flow yang tercatat = dikerjakan di MVP; yang ditunda hanya masuk Backlog. Jangan buat tabel Scope MVP/prioritas/status terpisah.
 - Catat field dan record default beserta nilainya, siap dijadikan data awal (seed) oleh programmer.
 - Tulis rules dan acceptance criteria sebagai kalimat biasa, **tanpa kode nomor** (jangan pakai R1.1, AC1.2, F1, dsb.) — cukup poin/checkbox di bawah judul flow.
 - Setiap rule: singkat, jelas, **bisa langsung diuji** (hindari kata kabur seperti "cepat", "mudah", "sesuai").

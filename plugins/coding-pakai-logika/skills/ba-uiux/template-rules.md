@@ -7,12 +7,7 @@
 - **Masalah inti:** …
 - **Tujuan MVP:** …
 
-## 2. Scope MVP
-| Fitur / Flow | Prioritas | Status |
-|---|---|---|
-| … | Must-have | Draft / Disepakati / Selesai desain |
-
-## 3. Flow
+## 2. Flow
 
 ### [Nama Flow]
 **Aktor:** …
@@ -31,7 +26,7 @@
 
 **Pesan & state:** kosong / loading / error / sukses — teks yang tampil: …
 
-## 4. Field & Record Default
+## 3. Field & Record Default
 ### [Nama Entitas / Master Data]
 | Field | Wajib | Nilai default | Pilihan bawaan |
 |---|---|---|---|
@@ -42,13 +37,13 @@
 |---|---|
 | … | … |
 
-## 5. Titik Integrasi (untuk programmer)
+## 4. Titik Integrasi (untuk programmer)
 | Halaman | Elemen | Aksi yang dibutuhkan |
 |---|---|---|
 | … | Tombol "Simpan" | Simpan data form [Nama Flow] |
 
-## 6. Keputusan Terbuka
+## 5. Keputusan Terbuka
 - …
 
-## 7. Backlog / Iterasi Berikutnya
+## 6. Backlog / Iterasi Berikutnya
 - …
