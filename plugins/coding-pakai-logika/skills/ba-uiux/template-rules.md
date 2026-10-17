@@ -5,26 +5,18 @@
 ## 1. Ringkasan Produk
 - **Pengguna utama:** …
 - **Masalah inti:** …
-- **Tujuan MVP:** …
 
 ## 2. Flow
 
 ### [Nama Flow]
-**Aktor:** …
-**Tujuan:** …
+**Aktor:** … *(tulis hanya jika pengguna lebih dari satu peran)*
 
 **Langkah:**
 1. …
 
-**Rules:**
-- …
-- …
-
 **Acceptance Criteria:**
 - [ ] Saat …, maka …
 - [ ] …
-
-**Pesan & state:** kosong / loading / error / sukses — teks yang tampil: …
 
 ## 3. Field & Record Default
 ### [Nama Entitas / Master Data]
@@ -37,13 +29,8 @@
 |---|---|
 | … | … |
 
-## 4. Titik Integrasi (untuk programmer)
-| Halaman | Elemen | Aksi yang dibutuhkan |
-|---|---|---|
-| … | Tombol "Simpan" | Simpan data form [Nama Flow] |
-
-## 5. Keputusan Terbuka
+## 4. Pertanyaan Konfirmasi
 - …
 
-## 6. Backlog / Iterasi Berikutnya
+## 5. Backlog / Iterasi Berikutnya
 - …
